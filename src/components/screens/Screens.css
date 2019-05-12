@@ -1,0 +1,40 @@
+.screen{
+    background-color: #97D2FB;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    color: #FF934F;
+    text-align: center;
+    border-top: 1px solid #FF934F;
+    padding-top: 5em;
+}
+.screen-content {
+    background-color: #5E565A;
+    border: 1px solid #FF934F;
+    padding: 5%;
+    margin: 0% 10% 0% 10%;
+    border-radius: 5px
+}
+label  { 
+    font-weight: 700
+}
+
+input {
+    border: 1px solid #FF934F;
+    background-color: #EFECCA;
+    border-radius: 3px;
+    margin-left: 1em;
+    width: 50%;
+    font-size: 1em;
+    margin: .5em
+}
+
+button {
+    background: #FF934F;
+    color: #5E565A;
+    border-radius: 3px;
+    height: 2em;
+    width: 6em;
+    font-size: 1em;
+    margin: .5em
+}

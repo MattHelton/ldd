@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
 import { Route, Switch } from 'react-router-dom';
-import Goals from './Goals'
-import Okay from './Okay'
-import Home from './Home'
-import Pictures from './Pictures'
+import Home from './screens/Home'
+import Actions from './screens/Actions'
+import Plans from './screens/Plans'
+import Images from './screens/Images'
 import './Layout.css';
 
 class ScreensRoot extends Component {
@@ -13,9 +13,9 @@ class ScreensRoot extends Component {
             <Router>
                 <Switch>
                     <Route exact path='/' component={Home} />
-                    <Route path='/okay' component={Okay} />
-                    <Route path='/goals' component={Goals} />
-                    <Route path='/pictures' component={Pictures} />
+                    <Route path='/actions' component={Actions} />
+                    <Route path='/plans' component={Plans} />
+                    <Route path='/images' component={Images} />
                     <Route render={() => <h1 id='no-page'>Page not found</h1>} />
                 </Switch>
             </Router>

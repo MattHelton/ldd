@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import './Screen.css';
+import './Screens.css';
 
-class Okay extends Component {
+class Actions extends Component {
     render() {
         return (
 
             // Remove this message after user begins list
             <div className='screen'>
-                This is where you will upload the things that make you feel better.
+                <div className='screen-content'>
+                    This is where you will upload the things that make you feel better.
+                </div>
             </div>
         // Add, view, edit, remove, and randomly generate from the list
         )
     }
 }
 
-export default Okay
+export default Actions

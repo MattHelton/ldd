@@ -1,7 +1,9 @@
 .nav-bar {
-    background-color: #EFECCA;
+    background-color: #97D2FB;
     overflow: hidden;
-    height: 5em
+    height: 3em;
+    border: 5px, solid #FF934F;
+    padding-bottom: 1px;
 }
 
 #brand {
@@ -14,7 +16,7 @@
     text-align: center;
     font-size: 1.5em;
     text-decoration: none;
-    padding: 1em;
+    padding: .5em;
     color: #5E565A
     
 }
