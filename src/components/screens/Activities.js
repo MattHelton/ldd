@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Screens.css';
 
-class Actions extends Component {
+class Activities extends Component {
     render() {
         return (
 
@@ -16,4 +16,4 @@ class Actions extends Component {
     }
 }
 
-export default Actions
+export default Activities

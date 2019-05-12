@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Screens.css';
 
-class Plans extends Component {
+class Goals extends Component {
     constructor(){
         super()
         this.state = {
@@ -54,4 +54,4 @@ class Plans extends Component {
     }
 }
 
-export default Plans
+export default Goals

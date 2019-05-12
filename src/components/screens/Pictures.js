@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Screens.css';
 
-class Images extends Component {
+class Pictures extends Component {
     render() {
         return (
         //Make this element go away once picture is uploaded
@@ -17,4 +17,4 @@ class Images extends Component {
     }
 }
 
-export default Images
+export default Pictures
