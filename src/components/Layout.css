@@ -1,0 +1,31 @@
+.nav-bar {
+    background-color: #EFECCA;
+    overflow: hidden;
+    height: 5em
+}
+
+#brand {
+    float: left
+}
+
+.nav-bar a {
+    float: right;
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+    text-decoration: none;
+    padding: 1em;
+    color: #5E565A
+    
+}
+
+.side-bar {
+    background-color: #A9CBB7;
+}
+
+.main {
+    background-color: #FF934F;
+    position: fixed;
+    height: 100%;
+    width: 100%
+}

@@ -1,0 +1,61 @@
+div {
+    font: #5E565A;
+  }
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #A9CBB7;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+
+  .container {font: #5E565A;
+    border-radius: 5px;
+    background-color: #EFECCA;
+    padding: 20px;
+    
+  }
+
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  /* Floating column for inputs: 75% width */
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  input[type=submit] {
+    background-color: #FF934F;
+    color: #5E565A;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input{
+      width: 100%;
+      margin-top: 0;
+    }
+  }
