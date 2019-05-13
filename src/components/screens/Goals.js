@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import GoalsList from './GoalsList';
+import GoalsForm from './GoalsForm';
 import './Screens.css';
 
 class Goals extends Component {
@@ -6,11 +8,22 @@ class Goals extends Component {
         super()
         this.state = {
             userInput: '',
-            title: ''
+            title: '',
+            items: null
         }
         this.handleInput = this.handleInput.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    componentDidMount() {
+        fetch("http://localhost:3000/api/v1/goals")
+    
+        .then(res => res.json())
+        .then(goals => 
+            this.setState({items: goals})
+        )
+    }
+
     handleInput(e) {
         this.setState({userInput: e.target.value})
     }
@@ -22,36 +35,22 @@ class Goals extends Component {
         this.setState({userInput: ''})
     }
     render() {
-        return (
-        // Remove this element once a goal has been saved
-            <div className='screen'>
-                <div className='screen-content' >
-                    <h1>
-                        This is where you'll save your goals
-                    </h1>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className='col-25'>
-                            <label for='plan'>Plan</label>
-                        </div>
-                        <div className='col-75'>
-                            <input 
-                                type='text' 
-                                onChange={this.handleInput}
-                                value={this.state.userInput}
-                            />
-                        </div>
-                        <div>
-                            <button type='submit'>
-                                Add
-                            </button>
-                        </div>
-                    </form>
+
+        if (!this.state.items) {
+            return (
+                <div>
+                    <GoalsForm onChange={this.state.handleInput}/>
+                </div>)
+        } else {
+            return (
+                <div>
+                    <GoalsForm onChange={this.state.handleInput}/>
+                    <GoalsList items={this.state.items}/>
                 </div>
-            </div>
-        // User can create a goal with a priority
-        // User can edit/delete these goals
-        )
-    }
+            )
+        
+    } 
+}
 }
 
 export default Goals
