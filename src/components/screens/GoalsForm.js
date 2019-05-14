@@ -6,9 +6,6 @@ render() {
         <div>
             <div className='screen'>
                 <div className='screen-content' >
-                    <h1>
-                       This is where you'll save your goals
-                    </h1>
                     <form onSubmit={this.handleSubmit}>
                         <div className='col-25'>
                            <label htmlFor='goal'>New Goal</label>
@@ -19,9 +16,14 @@ render() {
                                onChange={this.handleInput}
                                value={this.props.userInput}
                             />
+                            <select>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
                         </div>
                         <div>
-                            <button type='submit'>
+                            <button type='submit' onSubmit={this.handleSubmit}>
                                Add
                             </button>
                         </div>

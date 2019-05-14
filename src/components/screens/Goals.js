@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import GoalsList from './GoalsList';
 import GoalsForm from './GoalsForm';
-import './Screens.css';
+// import './Screens.css';
 
 class Goals extends Component {
     constructor(){
         super()
         this.state = {
             userInput: '',
-            title: '',
-            items: null
+            goals: null,
+            isHidden: true
         }
         this.handleInput = this.handleInput.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
@@ -20,7 +21,7 @@ class Goals extends Component {
     
         .then(res => res.json())
         .then(goals => 
-            this.setState({items: goals})
+            this.setState({goals: goals})
         )
     }
 
@@ -28,24 +29,39 @@ class Goals extends Component {
         this.setState({userInput: e.target.value})
     }
 
-    handleSubmit(e) {
-        e.preventDefault()
+    handleClick() {
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
+    }
+
+    handleSubmit() {
         // const { title } = this.state
         alert('Plan added!')
         this.setState({userInput: ''})
+        console.log('Submitted?')
     }
     render() {
 
-        if (!this.state.items) {
+        if (!this.state.goals) {
+            console.log('if')
             return (
                 <div>
-                    <GoalsForm onChange={this.state.handleInput}/>
-                </div>)
+                    <button onClick={this.handleClick} >
+                            Add goal
+                    </button>
+                    {!this.state.isHidden && <GoalsForm />}
+                </div>
+                )
         } else {
+            console.log('else')
             return (
                 <div>
-                    <GoalsForm onChange={this.state.handleInput}/>
-                    <GoalsList items={this.state.items}/>
+                    <button onClick={this.handleClick} >
+                            New goal
+                    </button>
+                    {!this.state.isHidden && <GoalsForm onSubmit={this.handleSubmit}/>}
+                    <GoalsList goals={this.state.goals}/>
                 </div>
             )
         

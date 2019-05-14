@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class GoalsList extends Component {
     
     render() {
-        const goals = this.props.items
-        console.log(this.props.items)
+        const goals = this.props.goals
+        console.log(this.props.goals)
         console.log(goals)
         if (!goals) {
             console.log('No goals')
@@ -14,17 +14,15 @@ class GoalsList extends Component {
                 </div>
             )
         }else {
-        const goalsArray = goals.data.map(goal => {
-            return (
-                <div key={goal.id}>
-                    {goal.title}
-                </div>
-                )
-        } )
+        const goalsArray = goals.data.map(goal => 
+                <h1 key={goal.id} className='goals'>
+                    This is the goal title: {goal.title}
+                </h1>
+         )
         console.log({goalsArray})
         return (
-            <div>
-                {goalsArray}
+            <div className='goals-list'>
+                This is a goal: {goalsArray}
             </div>
             
         )}

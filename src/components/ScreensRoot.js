@@ -5,7 +5,7 @@ import Home from './screens/Home'
 import Activities from './screens/Activities'
 import Goals from './screens/Goals'
 import Pictures from './screens/Pictures'
-import './Layout.css';
+// import './Layout.css';
 
 class ScreensRoot extends Component {
     render() {
