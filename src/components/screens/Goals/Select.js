@@ -6,8 +6,8 @@ class Select extends Component {
             <select 
                 name={this.props.name}
                 value={this.props.value}
-                >
-                 <option value="" disabled>{this.props.placeholder}</option>
+            >
+                <option value="" selected disabled hidden>{this.props.placeholder}</option>
                     {this.props.options.map(option => {
                     return (
                         <option

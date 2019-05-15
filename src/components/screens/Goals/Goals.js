@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import GoalsForm from './GoalsForm';
 import Input from './Input';
 import Select from './Select';
+import Checkbox from './Checkbox';
 // import './Screens.css';
 
 class Goals extends Component {
@@ -62,6 +63,7 @@ class Goals extends Component {
                     placeholder={'Select Priority'}
                     // handleChange={this.handleInput}
                 />
+                <Checkbox />
             </form>
         )
         // if (!this.state.goals) {
