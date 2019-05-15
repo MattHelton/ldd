@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import GoalsList from '../GoalsList';
 // import GoalsForm from './GoalsForm';
-import Input from './Input'
+import Input from './Input';
+import Select from './Select';
 // import './Screens.css';
 
 class Goals extends Component {
@@ -11,7 +12,8 @@ class Goals extends Component {
             userInput: '',
             goals: null,
             newGoal: '',
-            isHidden: true
+            isHidden: true,
+            priorityOptions: ['low', 'medium', 'high']
         }
         this.handleInput = this.handleInput.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -52,7 +54,15 @@ class Goals extends Component {
     }
     render() {
         return (
-            <Input onChange={this.handleInput}/>
+            <form>
+                <Input onChange={this.handleInput}/>
+                <Select 
+                    title={'Priority'}
+                    options={this.state.priorityOptions}
+                    placeholder={'Select Priority'}
+                    // handleChange={this.handleInput}
+                />
+            </form>
         )
         // if (!this.state.goals) {
         //     console.log('if')
