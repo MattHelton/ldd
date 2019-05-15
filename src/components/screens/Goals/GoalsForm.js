@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
 class GoalsForm extends Component {
+    constructor(){
+        super()
+        this.submitGoal = this.submitGoal.bind(this)
+    }
+    submitGoal(e){
+        e.preventDefault()
+        this.handleSubmit()
+    }
 render() {
     return (
         <div>
@@ -23,7 +31,7 @@ render() {
                             </select>
                         </div>
                         <div>
-                            <button type='submit' onSubmit={this.handleSubmit}>
+                            <button type='submit' onSubmit={this.submitGoal}>
                                Add
                             </button>
                         </div>

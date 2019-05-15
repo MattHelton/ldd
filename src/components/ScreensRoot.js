@@ -3,7 +3,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import { Route, Switch } from 'react-router-dom';
 import Home from './screens/Home'
 import Activities from './screens/Activities'
-import Goals from './screens/Goals'
+import Goals from './screens/Goals/Goals'
 import Pictures from './screens/Pictures'
 // import './Layout.css';
 
