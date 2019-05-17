@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Screens.css';
+import AddActivities from './AddActivities'
+import ActivityGenerator from './ActivityGenerator'
 
 class Activities extends Component {
     render() {
@@ -8,7 +9,8 @@ class Activities extends Component {
             // Remove this message after user begins list
             <div className='screen'>
                 <div className='screen-content'>
-                    This is where you will upload the things that make you feel better.
+                    <AddActivities />
+                    <ActivityGenerator />
                 </div>
             </div>
         // Add, view, edit, remove, and randomly generate from the list

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import Checkbox from '../../Elements/Checkbox'
 
 class GoalsList extends Component {
     
@@ -14,14 +15,17 @@ class GoalsList extends Component {
                 </div>
             )
         }else {
-        const goalsArray = goals.data.map(goal => 
-                <h1 key={goal.id} className='goals'>
-                    This is the goal title: {goal.title}
-                </h1>
+        const goalsArray = goals.data.map(goal =>
+            <Fragment key={goal.id}> 
+                    <h1 className='goals'>
+                        {goal.title}
+                    </h1>
+                    <Checkbox />
+                </Fragment>
          )
         return (
             <div className='goals-list'>
-                This is a goal: {goalsArray}
+                {goalsArray}
             </div>
             
         )}

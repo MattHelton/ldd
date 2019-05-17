@@ -1,25 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // import GoalsList from '../GoalsList';
 // import GoalsForm from './GoalsForm';
-import Input from './Input';
-import Select from './Select';
-import Checkbox from './Checkbox';
+import Input from '../../Elements/Input';
+import Select from '../../Elements/Select';
+import Checkbox from '../../Elements/Checkbox';
+import GoalsList from './GoalsList';
+import SubmitButton from '../../Elements/SubmitButton';
 // import './Screens.css';
 
 class Goals extends Component {
-    constructor(){
-        super()
-        this.state = {
+        state = {
             userInput: '',
             goals: null,
             newGoal: '',
             isHidden: true,
             priorityOptions: ['low', 'medium', 'high']
         }
-        this.handleInput = this.handleInput.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleClick = this.handleClick.bind(this)
-    }
 
     componentDidMount() {
         fetch("http://localhost:3000/api/v1/goals")
@@ -30,17 +26,17 @@ class Goals extends Component {
         )
     }
 
-    handleInput(e) {
+    handleInput = (e) => {
         this.setState({userInput: e.target.value})
     }
 
-    handleClick() {
+    handleClick = () => {
         this.setState({
             isHidden: !this.state.isHidden
         })
     }
 
-    handleSubmit(e) {
+    handleSubmit = (e) => {
         e.preventDefault();
         // const { goals } = this.state
         // this.setState({newGoal: goals})
@@ -55,16 +51,20 @@ class Goals extends Component {
     }
     render() {
         return (
-            <form>
-                <Input onChange={this.handleInput}/>
-                <Select 
-                    title={'Priority'}
-                    options={this.state.priorityOptions}
-                    placeholder={'Select Priority'}
-                    // handleChange={this.handleInput}
-                />
-                <Checkbox />
-            </form>
+            <Fragment>
+                <form>
+                    <Input onChange={this.handleInput}/>
+                    <Select 
+                        title={'Priority'}
+                        options={this.state.priorityOptions}
+                        placeholder={'Select Priority'}
+                        // handleChange={this.handleInput}
+                    />
+                    <Checkbox />
+                    <SubmitButton />
+                </form>
+                <GoalsList goals={this.state.goals}/>
+            </Fragment>
         )
         // if (!this.state.goals) {
         //     console.log('if')

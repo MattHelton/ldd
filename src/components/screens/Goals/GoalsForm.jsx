@@ -16,7 +16,7 @@ render() {
                 <div className='screen-content' >
                     <form onSubmit={this.handleSubmit}>
                         <div className='col-25'>
-                           <label htmlFor='goal'>New Goal</label>
+                           <label htmlFor='goal'>New Goal</label>  
                         </div>
                         <div className='col-75'>
                             <input 

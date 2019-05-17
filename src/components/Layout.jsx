@@ -13,7 +13,7 @@ class Layout extends Component {
         <ScreensRoot />
     </div>
         )
-    }
+    }      
 }
 
 export default Layout
