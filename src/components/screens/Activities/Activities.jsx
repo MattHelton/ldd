@@ -3,16 +3,35 @@ import AddActivities from './AddActivities'
 import ActivityGenerator from './ActivityGenerator'
 
 class Activities extends Component {
+    state = {
+
+    }
+    componentDidMount() {
+        // Fetch activities
+    }
+
+    handleGenerate = () => {
+        // Randomly display actvity from fetched activity array
+        console.log('generated')
+    }
+
+    handleDelete = () => {
+        // Deletes activities from database
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault()
+        console.log('submitted')
+    }
+
     render() {
         return (
-
-            // Remove this message after user begins list
-            <div className='screen'>
-                <div className='screen-content'>
+            <React.Fragment>
+                <form onSubmit={this.onSubmit}>
                     <AddActivities />
-                    <ActivityGenerator />
-                </div>
-            </div>
+                </form>
+                    <ActivityGenerator onClick={this.handleGenerate}/>
+            </React.Fragment>
         // Add, view, edit, remove, and randomly generate from the list
         )
     }

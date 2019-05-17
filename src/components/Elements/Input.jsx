@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Input extends Component {
-render() {
-    return (
+const Input = (props) => {
+    return (  
         <input 
            type='text' 
-           onChange={this.handleInput}
-           value={this.props.userInput}
+           onChange={props.handleInput}
+           value={props.userInput}
         />
-    )
+    );
 }
-}
-
-export default Input
+ 
+export default Input;

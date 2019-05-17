@@ -6,7 +6,6 @@ import Select from '../../Elements/Select';
 import Checkbox from '../../Elements/Checkbox';
 import GoalsList from './GoalsList';
 import SubmitButton from '../../Elements/SubmitButton';
-// import './Screens.css';
 
 class Goals extends Component {
         state = {
@@ -19,7 +18,6 @@ class Goals extends Component {
 
     componentDidMount() {
         fetch("http://localhost:3000/api/v1/goals")
-    
         .then(res => res.json())
         .then(goals => 
             this.setState({goals: goals})

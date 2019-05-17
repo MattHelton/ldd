@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ActivityGenerator = () => {
+const ActivityGenerator = (props) => {
     return ( 
         <React.Fragment>
-            <button>Generate</button>
+            <button onClick={props.onClick}>Generate</button>
             {/* display generated activity */}
         </React.Fragment>
      );

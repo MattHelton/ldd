@@ -1,25 +1,22 @@
-import React, { Component } from 'react';
-
-class Select extends Component {
-    render() {
-        return (
-            <select 
-                name={this.props.name}
-                value={this.props.value}
-            >
-                <option value="" selected disabled hidden>{this.props.placeholder}</option>
-                    {this.props.options.map(option => {
-                    return (
-                        <option
-                            key={option}
-                            value={option}
-                            label={option}>{option}
-                        </option>
-                        );
-                    })}
-            </select>
-        )
-    }
+import React from 'react';
+const Select = (props) => {
+    return (
+        <select 
+            name={props.name}
+            value={props.value}
+        >
+            <option value={props.placeholder} disabled hidden>{props.placeholder}</option>
+                {props.options.map(option => {
+                return (
+                    <option
+                        key={option}
+                        value={option}
+                        label={option}>{option}
+                    </option>
+                    );
+                })}
+        </select>
+    )
 }
-
-export default Select
+ 
+export default Select;
