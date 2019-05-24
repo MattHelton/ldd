@@ -1,46 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import * as PropTypes from 'prop-types';
+import AddGoal from './AddGoal';
 
-class GoalsForm extends Component {
-    constructor(){
-        super()
-        this.submitGoal = this.submitGoal.bind(this)
-    }
-    submitGoal(e){
-        e.preventDefault()
-        this.handleSubmit()
-    }
-render() {
-    return (
-        <div>
-            <div className='screen'>
-                <div className='screen-content' >
-                    <form onSubmit={this.handleSubmit}>
-                        <div className='col-25'>
-                           <label htmlFor='goal'>New Goal</label>  
-                        </div>
-                        <div className='col-75'>
-                            <input 
-                               type='text' 
-                               onChange={this.handleInput}
-                               value={this.props.userInput}
-                            />
-                            <select>
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
-                            </select>
-                        </div>
-                        <div>
-                            <button type='submit' onSubmit={this.submitGoal}>
-                               Add
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    )
-}
-}
+const GoalsForm = ({ onChange, userInput, onSubmit }) => {
+  return (
+    <form onSubmit={onSubmit}>
+      <AddGoal onChange={onChange} userInput={userInput} />
+    </form>
+  );
+};
 
-export default GoalsForm
+GoalsForm.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  userInput: PropTypes.string.isRequired,
+};
+
+export default GoalsForm;
