@@ -3,6 +3,15 @@ import AddActivities from './AddActivities';
 import ActivityGenerator from './ActivityGenerator';
 
 class Activities extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userInput: '',
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   componentDidMount() {
     // Fetch activities
   }
@@ -12,8 +21,8 @@ class Activities extends Component {
     console.log('generated');
   }
 
-  handleDelete() {
-    // Deletes activities from database
+  handleDelete(e) {
+    e.preventDefault();
   }
 
   onSubmit(e) {
@@ -21,15 +30,19 @@ class Activities extends Component {
     console.log('submitted');
   }
 
+  handleChange(e) {
+    this.setState({ userInput: e.target.value });
+  }
+
   render() {
     return (
       <React.Fragment>
         <form onSubmit={this.onSubmit}>
-          <AddActivities />
+          <AddActivities onSubmit={this.onSubmit} />
         </form>
         <ActivityGenerator onClick={this.handleGenerate} />
       </React.Fragment>
-    // Add, view, edit, remove, and randomly generate from the list
+      // Add, view, edit, remove, and randomly generate from the list
     );
   }
 }

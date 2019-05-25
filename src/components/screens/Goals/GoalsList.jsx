@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Checkbox from '../../Elements/Checkbox';
 
 const goalsArray = goals.data.map(goal => (
@@ -9,7 +9,6 @@ const goalsArray = goals.data.map(goal => (
 ));
 const GoalsList = () => {
     return (
-        
     );
 }
  

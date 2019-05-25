@@ -5,7 +5,7 @@ import AddGoal from './AddGoal';
 const GoalsForm = ({ onChange, userInput, onSubmit }) => {
   return (
     <form onSubmit={onSubmit}>
-      <AddGoal onChange={onChange} userInput={userInput} />
+      <AddGoal onChange={onChange} userInput={userInput} onSubmit={onSubmit} />
     </form>
   );
 };
