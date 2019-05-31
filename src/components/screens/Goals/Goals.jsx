@@ -1,33 +1,24 @@
-import React, { Component } from 'react';
-import GoalsForm from './GoalsForm';
+import React, { Fragment } from 'react';
+import * as PropTypes from 'prop-types';
+import CheckBox from '../../Elements/Checkbox';
 
-class Goals extends Component {
-  constructor() {
-    super();
-    this.state = {
-      userInput: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({ userInput: e.target.value });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-  }
-
-  render() {
+const Goals = ({ goals }) => {
+  console.log(goals);
+  const goalsArray = goals.map(goal => {
     return (
-      <GoalsForm
-        onChange={this.handleChange}
-        userInput={this.userInput}
-        onSubmit={this.handleSubmit}
-      />
+      <Fragment>
+        <h1 key={goal.id} className="goals">
+          {goal.title}
+        </h1>
+        <CheckBox />
+      </Fragment>
     );
-  }
-}
+  });
+  return <div>{goalsArray}</div>;
+};
+
+Goals.propTypes = {
+  goals: PropTypes.func.isRequired,
+};
 
 export default Goals;

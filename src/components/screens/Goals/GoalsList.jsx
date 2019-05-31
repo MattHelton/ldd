@@ -1,27 +1,16 @@
 import React, { Fragment } from 'react';
-import Checkbox from '../../Elements/Checkbox';
+import * as PropTypes from 'prop-types';
+// import CheckBox from '../../Elements/Checkbox';
+import NoGoals from './NoGoals';
+import Goals from './Goals';
 
-const goalsArray = goals.data.map(goal => (
-  <Fragment key={goal.id}>
-    <h1 className="goals">{goal.title}</h1>
-    <Checkbox />
-  </Fragment>
-));
-const GoalsList = () => {
-    return (
-    );
-}
- 
-export default GoalsList;
-const GoalsList = () => {
-  const { goals } = this.props.goals;
-  
+const GoalsList = ({ goals }) => {
+  console.log(goals);
+  return !goals ? <NoGoals /> : <Goals goals={goals} />;
+};
+
+GoalsList.propTypes = {
+  goals: PropTypes.func.isRequired,
 };
 
 export default GoalsList;
-
-if (!goals) {
-  <div>No goals to display</div>;
-} else {
-  <div className="goals-list">{goalsArray}</div>;
-}

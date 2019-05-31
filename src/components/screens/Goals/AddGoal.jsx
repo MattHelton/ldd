@@ -3,10 +3,10 @@ import * as PropTypes from 'prop-types';
 import Button from '../../Elements/Button';
 import GoalsInput from './GoalsInput';
 
-const AddGoal = ({ onChange, userInput, onSubmit }) => {
+const AddGoal = ({ onChange, onSubmit }) => {
   return (
     <Fragment>
-      <GoalsInput onChange={onChange} userInput={userInput} />
+      <GoalsInput onChange={onChange} />
       <Button onSubmit={onSubmit} />
     </Fragment>
   );
@@ -15,7 +15,6 @@ const AddGoal = ({ onChange, userInput, onSubmit }) => {
 AddGoal.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  userInput: PropTypes.string.isRequired,
 };
 
 export default AddGoal;
