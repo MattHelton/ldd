@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddActivities from './AddActivities';
 import ActivityGenerator from './ActivityGenerator';
+import DisplayActivity from './displayActivity';
 
 class Activities extends Component {
   constructor() {
@@ -8,6 +9,7 @@ class Activities extends Component {
     this.state = {
       userInput: '',
       activities: [],
+      chosenActivity: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -41,7 +43,7 @@ class Activities extends Component {
     const { activities } = this.state;
     // Randomly display actvity from fetched activity array
     const number = this.roll();
-    console.log('generated', activities[number], number);
+    this.setState({ chosenActivity: activities[number].name });
   }
 
   handleChange(e) {
@@ -49,7 +51,7 @@ class Activities extends Component {
   }
 
   render() {
-    const { activities } = this.state;
+    const { activities, chosenActivity } = this.state;
     return (
       <React.Fragment>
         <form onSubmit={this.onSubmit}>
@@ -59,6 +61,7 @@ class Activities extends Component {
           onClick={this.handleGenerate}
           activities={activities}
         />
+        <DisplayActivity chosenActivity={chosenActivity} />
       </React.Fragment>
       // Add, view, edit, remove, and randomly generate from the list
     );
