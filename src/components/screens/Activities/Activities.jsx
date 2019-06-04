@@ -11,6 +11,7 @@ class Activities extends Component {
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleGenerate = this.handleGenerate.bind(this);
   }
 
   componentDidMount() {
@@ -22,13 +23,6 @@ class Activities extends Component {
       });
   }
 
-  handleGenerate() {
-    const { activities } = this.state;
-    // Randomly display actvity from fetched activity array
-    const randomIndex = Math.floor(Math.random() * activities.length);
-    console.log('generated', activities[randomIndex]);
-  }
-
   handleDelete(e) {
     e.preventDefault();
   }
@@ -36,6 +30,18 @@ class Activities extends Component {
   onSubmit(e) {
     e.preventDefault();
     console.log('submitted');
+  }
+
+  roll() {
+    const { activities } = this.state;
+    return Math.floor(Math.random() * activities.length);
+  }
+
+  handleGenerate() {
+    const { activities } = this.state;
+    // Randomly display actvity from fetched activity array
+    const number = this.roll();
+    console.log('generated', activities[number], number);
   }
 
   handleChange(e) {
