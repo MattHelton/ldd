@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import * as PropTypes from 'prop-types';
+// import * as PropTypes from 'prop-types';
 import Button from '../../Elements/Button';
 import GoalsInput from './GoalsInput';
 
@@ -12,9 +12,9 @@ const AddGoal = ({ onChange, onSubmit }) => {
   );
 };
 
-AddGoal.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-};
+// AddGoal.propTypes = {
+//   onChange: PropTypes.func.isRequired,
+//   onSubmit: PropTypes.func.isRequired,
+// };
 
 export default AddGoal;

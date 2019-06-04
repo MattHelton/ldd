@@ -1,7 +1,7 @@
+/* eslint-disable class-methods-use-this */
 import React, { Component, Fragment } from 'react';
-import GoalsForm from './GoalsForm';
 import GoalsList from './GoalsList';
-import CheckBox from '../../Elements/Checkbox';
+import AddGoal from './AddGoal';
 
 class GoalScreen extends Component {
   constructor() {
@@ -28,17 +28,30 @@ class GoalScreen extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const { userInput } = this.state;
+    fetch('http://localhost:3000/api/v1/goals', {
+      method: 'POST',
+      body: JSON.stringify({ userInput }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ userInput: '' });
+      })
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   }
 
   render() {
     const { goals } = this.state;
     return (
       <Fragment>
-        <GoalsForm
-          onChange={this.handleChange}
-          userInput={this.userInput}
-          onSubmit={this.handleSubmit}
-        />
+        <form onSubmit={this.onSubmit}>
+          <AddGoal
+            onChange={this.handleChange}
+            userInput={this.userInput}
+            onSubmit={this.handleSubmit}
+          />
+        </form>
         <GoalsList goals={goals} />
       </Fragment>
     );

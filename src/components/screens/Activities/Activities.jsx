@@ -7,18 +7,26 @@ class Activities extends Component {
     super();
     this.state = {
       userInput: '',
+      activities: [],
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    // Fetch activities
+    fetch('http://localhost:3000/api/v1/activities')
+      .then(res => res.json())
+      .then(activity => {
+        this.setState({ activities: activity });
+        console.log(this.state.activities);
+      });
   }
 
   handleGenerate() {
+    const { activities } = this.state;
     // Randomly display actvity from fetched activity array
-    console.log('generated');
+    const randomIndex = Math.floor(Math.random() * activities.length);
+    console.log('generated', activities[randomIndex]);
   }
 
   handleDelete(e) {
@@ -35,12 +43,16 @@ class Activities extends Component {
   }
 
   render() {
+    const { activities } = this.state;
     return (
       <React.Fragment>
         <form onSubmit={this.onSubmit}>
           <AddActivities onSubmit={this.onSubmit} />
         </form>
-        <ActivityGenerator onClick={this.handleGenerate} />
+        <ActivityGenerator
+          onClick={this.handleGenerate}
+          activities={activities}
+        />
       </React.Fragment>
       // Add, view, edit, remove, and randomly generate from the list
     );
