@@ -9,6 +9,6 @@ const DisplayActivity = ({ chosenActivity }) => (
   </Fragment>
 );
 DisplayActivity.propTypes = {
-  idea: PropTypes.string.isRequired,
+  chosenActivity: PropTypes.string.isRequired,
 };
 export default DisplayActivity;

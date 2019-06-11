@@ -1,8 +1,8 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
 
-const GoalsInput = ({ onChange }) => {
-  return <input type="text" onChange={onChange} />;
+const GoalsInput = ({ onChange, title }) => {
+  return <input type="text" onChange={onChange} value={title} />;
 };
 
 GoalsInput.propTypes = {

@@ -1,9 +1,9 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
 
-const Button = props => {
+const Button = ({ onSubmit }) => {
   return (
-    <button type="button" onSubmit={props.onSubmit}>
+    <button type="submit" onSubmit={onSubmit}>
       Add
     </button>
   );

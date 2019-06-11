@@ -7,7 +7,7 @@ class GoalScreen extends Component {
   constructor() {
     super();
     this.state = {
-      userInput: '',
+      userInput: { title: '' },
       goals: [],
     };
     this.handleChange = this.handleChange.bind(this);
@@ -18,38 +18,46 @@ class GoalScreen extends Component {
     fetch('http://localhost:3000/api/v1/goals')
       .then(res => res.json())
       .then(goals => {
-        this.setState({ goals: goals.data });
+        this.setState({ goals });
       });
   }
 
   handleChange(e) {
-    this.setState({ userInput: e.target.value });
+    this.setState({ userInput: { title: e.target.value } });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const { userInput } = this.state;
-    fetch('http://localhost:3000/api/v1/goals', {
+
+    return fetch('http://localhost:3000/api/v1/goals', {
       method: 'POST',
-      body: JSON.stringify({ userInput }),
+      mode: 'cors',
+      body: JSON.stringify(userInput),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
       .then(res => res.json())
-      .then(res => {
-        this.setState({ userInput: '' });
+      .then(data => {
+        console.log(data);
+        const goals = this.state.goals.slice();
+        goals.push(data);
+        this.setState({ userInput: { title: '' }, goals });
       })
-      .then(data => console.log(data))
       .catch(err => console.log(err));
   }
 
   render() {
     const { goals } = this.state;
+    const { title } = this.state.userInput;
     return (
       <Fragment>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <AddGoal
             onChange={this.handleChange}
             userInput={this.userInput}
-            onSubmit={this.handleSubmit}
+            title={title}
           />
         </form>
         <GoalsList goals={goals} />

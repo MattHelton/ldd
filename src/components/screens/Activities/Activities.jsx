@@ -25,13 +25,13 @@ class Activities extends Component {
       });
   }
 
-  handleDelete(e) {
-    e.preventDefault();
-  }
-
   onSubmit(e) {
     e.preventDefault();
     console.log('submitted');
+  }
+
+  handleDelete(e) {
+    e.preventDefault();
   }
 
   roll() {

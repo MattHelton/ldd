@@ -3,11 +3,15 @@ import React, { Fragment } from 'react';
 import Button from '../../Elements/Button';
 import GoalsInput from './GoalsInput';
 
-const AddGoal = ({ onChange, onSubmit }) => {
+const AddGoal = ({ onChange, onSubmit, title }) => {
   return (
     <Fragment>
-      <GoalsInput onChange={onChange} />
-      <Button onSubmit={onSubmit} />
+      <GoalsInput onChange={onChange} title={title} />
+      <Button
+        onSubmit={() => {
+          console.log('submission started');
+        }}
+      />
     </Fragment>
   );
 };
