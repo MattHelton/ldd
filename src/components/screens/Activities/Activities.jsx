@@ -7,11 +7,11 @@ class Activities extends Component {
   constructor() {
     super();
     this.state = {
-      userInput: '',
+      userInput: { name: '' },
       activities: [],
       chosenActivity: '',
     };
-    this.onSubmit = this.onSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleGenerate = this.handleGenerate.bind(this);
   }
@@ -21,13 +21,34 @@ class Activities extends Component {
       .then(res => res.json())
       .then(activity => {
         this.setState({ activities: activity });
-        console.log(this.state.activities);
+        console.log(this.activities);
       });
   }
 
-  onSubmit(e) {
+  handleChange(e) {
+    this.setState({ userInput: { name: e.target.value } });
+  }
+
+  handleSubmit(e) {
     e.preventDefault();
-    console.log('submitted');
+    const { userInput } = this.state;
+
+    return fetch('http://localhost:3000/api/v1/activities', {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(userInput),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        const activities = this.state.activities.slice();
+        activities.push(data);
+        this.setState({ userInput: { name: '' }, activities });
+      })
+      .catch(err => console.log(err));
   }
 
   handleDelete(e) {
@@ -46,16 +67,18 @@ class Activities extends Component {
     this.setState({ chosenActivity: activities[number].name });
   }
 
-  handleChange(e) {
-    this.setState({ userInput: e.target.value });
-  }
-
   render() {
     const { activities, chosenActivity } = this.state;
+    const { name } = this.state.userInput;
     return (
       <React.Fragment>
-        <form onSubmit={this.onSubmit}>
-          <AddActivities onSubmit={this.onSubmit} />
+        <form onSubmit={this.handleSubmit}>
+          <AddActivities
+            onChange={this.handleChange}
+            onSubmit={this.handleSubmit}
+            userInput={this.userInput}
+            name={name}
+          />
         </form>
         <ActivityGenerator
           onClick={this.handleGenerate}

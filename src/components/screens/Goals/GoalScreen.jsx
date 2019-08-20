@@ -56,6 +56,7 @@ class GoalScreen extends Component {
         <form onSubmit={this.handleSubmit}>
           <AddGoal
             onChange={this.handleChange}
+            onSubmit={this.handleSubmit}
             userInput={this.userInput}
             title={title}
           />

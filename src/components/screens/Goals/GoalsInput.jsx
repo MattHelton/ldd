@@ -7,6 +7,7 @@ const GoalsInput = ({ onChange, title }) => {
 
 GoalsInput.propTypes = {
   onChange: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default GoalsInput;
